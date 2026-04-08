@@ -262,3 +262,93 @@ transition: slide-left
 
 > **小贴士**：这类复杂的内嵌和可拓展对象逻辑能让你在发表演讲报告时刻游刃有余地控制展示细节。
 
+---
+layout: section
+transition: slide-up
+---
+
+# 第二部分
+## Slidev 基础使用方法
+
+从 0 到 1，先掌握最小可用流程。
+
+---
+transition: slide-left
+---
+
+# 7. 本节你将掌握什么
+
+<v-clicks>
+
+- 如何创建并启动一个 Slidev 项目
+- `slides.md` 的核心结构：Headmatter / Frontmatter / 分隔符
+- 常见语法：代码块、讲者备注、布局配置
+- 演示时最常用的 UI 与快捷键
+
+</v-clicks>
+
+> 目标：10 分钟内写出一份可演讲、可导出、可部署的基础幻灯片。
+
+---
+transition: slide-left
+---
+
+# 8. 创建并运行项目
+
+根据官方 Getting Started，建议本地环境如下：
+
+- Node.js `>= 20.12.0`
+- `pnpm`（推荐）
+
+```bash
+# 全局安装 pnpm（如果还没有）
+npm i -g pnpm
+
+# 创建项目
+pnpm create slidev
+
+# 进入目录并启动
+pnpm install
+pnpm dev
+```
+
+常用命令：
+
+- `pnpm dev`：本地预览（通常会打开 `http://localhost:3030`）
+- `pnpm build`：构建静态站点
+- `pnpm export`：导出 PDF / PPTX / PNG
+- `pnpm slidev --help`：查看 CLI 帮助
+
+---
+transition: slide-left
+---
+
+# 9. 理解 slides.md 的结构
+
+```md
+---
+theme: default
+title: 我的第一份 Slidev
+---
+
+# Slide 1
+
+这是第一页
+
+---
+layout: center
+class: text-center
+---
+
+# Slide 2
+```
+
+要点：
+
+- 第一段 YAML 叫 **Headmatter**，作用于整个 deck
+- 后续每页开头 YAML 叫 **Frontmatter**，作用于单页
+- `---`（独占一行）用于分隔幻灯片
+
+---
+transition: slide-left
+---
