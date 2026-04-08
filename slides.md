@@ -250,7 +250,7 @@ transition: slide-left
 <div>
 🖐️ 自由的可拖拽 (Draggable) 对象
 
-<div v-drag="[314,337,439,183]" class="mt-4 p-6 bg-green-50 dark:bg-green-900/30 border-2 border-green-400 dark:border-green-600 rounded-xl text-center cursor-move text-green-800 dark:text-green-100 shadow-lg transform transition-transform hover:scale-105 duration-300">
+<div v-drag="[478,154,439,183]" class="mt-4 p-6 bg-green-50 dark:bg-green-900/30 border-2 border-green-400 dark:border-green-600 rounded-xl text-center cursor-move text-green-800 dark:text-green-100 shadow-lg transform transition-transform hover:scale-105 duration-300">
   <div class="text-4xl mb-3">🎈</div>
   这是一个加入了 <code>v-drag</code> 指令的组件实例。<br><br>
   <strong>试试在播放页面中，将我用鼠标拖拽到任意位置！</strong>
@@ -262,15 +262,3 @@ transition: slide-left
 
 > **小贴士**：这类复杂的内嵌和可拓展对象逻辑能让你在发表演讲报告时刻游刃有余地控制展示细节。
 
----
-layout: center
-class: text-center
-transition: slide-down
----
-
-# 第一部分演示结束
-
-我们刚刚使用原生 Markdown 和 Vue 代码片段，轻松体验了 **Slidev** 的进阶特性。
-
-<br>
-<span class="text-sm opacity-50">（期待下一部分的深入探讨...）</span>
