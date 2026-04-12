@@ -472,3 +472,239 @@ const boxStyle = computed(() => ({
 ---
 transition: slide-left
 ---
+# UI 工具栏一览
+
+底部控制栏将常用操作分区排列，配合快捷键可实现**零鼠标演讲**。
+
+<div class="grid grid-cols-2 gap-4 mt-4 text-sm">
+
+<div>
+
+**🧭 导航区**
+
+<div class="space-y-1.5 mt-2">
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 w-8 text-center shrink-0">⛶</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">全屏切换</span>
+    <kbd class="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">f</kbd>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 w-8 text-center shrink-0">← →</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">上一页 / 下一页</span>
+    <kbd class="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">← →</kbd>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 w-8 text-center shrink-0">⊞</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">幻灯片总览</span>
+    <kbd class="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">o</kbd>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 w-8 text-center shrink-0">☾</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">切换深色模式</span>
+    <kbd class="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">d</kbd>
+  </div>
+</div>
+
+</div>
+
+<div>
+
+**🎙️ 演讲工具区**
+
+<div class="space-y-1.5 mt-2">
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-purple-500 dark:text-purple-400 w-8 text-center shrink-0">◉</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">摄像头视图</span>
+    <span class="text-xs text-gray-400">—</span>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-purple-500 dark:text-purple-400 w-8 text-center shrink-0">⏺</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">录制演讲</span>
+    <span class="text-xs text-gray-400">—</span>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-purple-500 dark:text-purple-400 w-8 text-center shrink-0">✏</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">画笔 / 黑板标注</span>
+    <kbd class="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">b</kbd>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-purple-500 dark:text-purple-400 w-8 text-center shrink-0">⊡</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">演讲者视图（含备注）</span>
+    <kbd class="px-1.5 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">p</kbd>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-purple-500 dark:text-purple-400 w-8 text-center shrink-0">PDF</code>
+    <span class="flex-1 text-gray-700 dark:text-gray-300">导出 PDF</span>
+    <span class="text-xs text-gray-400">—</span>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 代码块语法
+
+Slidev 使用标准 Markdown 围栏代码块，只需在开头指定语言即可获得完整语法高亮。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**书写方式**
+
+![alt text](./image.png)
+
+<div class="mt-3 text-gray-500 dark:text-gray-400 text-xs space-y-1">
+  <div>· 开头三个反引号 + 语言名</div>
+  <div>· 支持 100+ 种语言（由 Shiki 驱动）</div>
+  <div>· 结尾三个反引号关闭</div>
+</div>
+
+</div>
+
+<div>
+
+**渲染效果**
+
+```python
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+
+print(greet("Slidev"))
+```
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 代码行高亮语法
+
+在语言名后加 `{行号}` 即可高亮指定行，支持多行、范围与逐步展示。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**书写方式**
+
+![alt text](./image-1.png)
+
+<div class="mt-3 text-gray-500 dark:text-gray-400 text-xs space-y-1">
+  <div>· 单行：<code>{3}</code></div>
+  <div>· 多行：<code>{1,3,5}</code></div>
+  <div>· 范围：<code>{4-6}</code></div>
+  <div>· 逐步点击：<code>{all|1|3|4-5}</code></div>
+</div>
+
+</div>
+
+<div>
+
+**渲染效果**
+
+```ts {2,4-5}
+import { ref } from 'vue'
+
+const count = ref(0)
+const double = computed(
+  () => count.value * 2
+)
+```
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# Shiki Magic Move
+
+在两个代码块之间加上 `magic-move`，元素会自动**平滑过渡**到新位置。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**书写方式**
+
+<img src="./image-2.png" width="50%">
+
+</div>
+
+<div>
+
+**渲染效果**
+
+````md magic-move
+```ts
+let msg = 'hello'
+```
+
+```ts
+import { ref } from 'vue'
+const msg = ref('hello')
+```
+
+```ts
+import { ref } from 'vue'
+const msg = ref('hello')
+msg.value = 'world'
+```
+````
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 可运行代码块（JS）
+
+在语言名后加 `{monaco-run}` 即可让代码块变成**可编辑、可执行**的在线编辑器。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**书写方式**
+
+![alt text](./image-3.png)
+
+<div class="mt-3 text-gray-500 dark:text-gray-400 text-xs space-y-1">
+  <div>· 点击右上角 <code>▶ Run</code> 执行</div>
+  <div>· 支持直接在幻灯片内修改代码</div>
+  <div>· 仅需加 <code>{monaco-run}</code> 后缀</div>
+</div>
+
+</div>
+
+<div>
+
+**渲染效果**
+
+```js {monaco-run}
+const items = [3, 1, 4, 1, 5, 9]
+
+const sorted = [...items].sort(
+  (a, b) => a - b
+)
+
+console.log('排序结果:', sorted)
+```
+
+</div>
+
+</div>
