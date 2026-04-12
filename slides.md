@@ -708,3 +708,274 @@ console.log('排序结果:', sorted)
 </div>
 
 </div>
+
+
+---
+transition: slide-left
+---
+
+# 点击动画①：基础指令
+
+`v-click` 系列指令让元素随点击**逐步出现或消失**，掌控演讲节奏。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+
+<div class="space-y-3">
+
+**三个核心指令**
+
+<div class="space-y-2 mt-1">
+  <div class="px-3 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500">v-click</code>
+    <span class="text-gray-500 dark:text-gray-400 ml-2">下次点击时出现</span>
+  </div>
+  <div class="px-3 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500">v-click-hide</code>
+    <span class="text-gray-500 dark:text-gray-400 ml-2">下次点击时消失</span>
+  </div>
+  <div class="px-3 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500">v-after</code>
+    <span class="text-gray-500 dark:text-gray-400 ml-2">与上一个同步出现</span>
+  </div>
+</div>
+
+**写法**
+
+```md
+<div v-click>第 1 次点击出现</div>
+<div v-click>第 2 次点击出现</div>
+<div v-click-hide>第 3 次点击消失</div>
+<div v-after>也在第 3 次出现</div>
+```
+
+</div>
+
+<div class="space-y-3">
+
+**实时演示**
+
+<div v-click class="px-4 py-3 rounded-lg bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700">
+  ✅ 第 1 次点击出现
+</div>
+
+<div v-click class="mt-2 px-4 py-3 rounded-lg bg-green-50 dark:bg-green-900/30 border border-green-300 dark:border-green-700">
+  ✅ 第 2 次点击出现
+</div>
+
+<div v-click-hide class="mt-2 px-4 py-3 rounded-lg bg-red-50 dark:bg-red-900/30 border border-red-300 dark:border-red-700">
+  ❌ 第 3 次点击消失
+</div>
+
+<div v-after class="mt-2 px-4 py-3 rounded-lg bg-purple-50 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700">
+  ✅ 也在第 3 次出现（v-after）
+</div>
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 点击动画②：v-clicks 批量应用
+
+`v-clicks` 组件自动为**所有子元素**依次添加点击动画，告别逐个写 `v-click`。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+
+<div>
+
+**基础用法**
+
+```md
+<v-clicks>
+  <li>步骤一：安装依赖</li>
+  <li>步骤二：配置环境</li>
+  <li>步骤三：启动项目</li>
+</v-clicks>
+```
+
+**depth 参数（嵌套展开）**
+
+```md
+<!-- depth=2 会递归展开两层子元素 -->
+<v-clicks depth="2">
+  <ul>
+    <li>分类 A
+      <ul>
+        <li>子项 A1</li>
+        <li>子项 A2</li>
+      </ul>
+    </li>
+    <li>分类 B</li>
+  </ul>
+</v-clicks>
+```
+
+</div>
+
+<div>
+
+**实时演示**
+
+<v-clicks class="space-y-2 mt-1">
+  <div class="px-4 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">📦 步骤一：安装依赖</div>
+  <div class="px-4 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">⚙️ 步骤二：配置环境</div>
+  <div class="px-4 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">🚀 步骤三：启动项目</div>
+  <div class="px-4 py-2.5 rounded-lg bg-gray-100 dark:bg-gray-800">✅ 步骤四：验证结果</div>
+</v-clicks>
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 点击动画③：顺序与区间控制
+
+通过数字参数精确控制每个元素的**出现时机与消失时机**。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+
+<div>
+
+**指定出现步骤**
+
+```md
+<!-- 按非顺序指定步骤 -->
+<div v-click="1">第 1 步出现</div>
+<div v-click="3">第 3 步出现</div>
+<div v-click="2">第 2 步出现</div>
+```
+
+**区间显示 `[出现, 消失]`**
+
+```md
+<!-- 第 1 步出现，第 3 步消失 -->
+<div v-click="[1, 3]">短暂显示</div>
+
+<!-- 第 2 步出现，一直保留 -->
+<div v-click="[2]">持续显示</div>
+```
+
+**frontmatter 声明总点击数**
+
+```yaml
+---
+clicks: 5
+---
+```
+
+</div>
+
+<div class="space-y-3">
+
+**实时演示（点击观察区间）**
+
+<div v-click="[1, 3]" class="px-4 py-2.5 rounded-lg bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-300 dark:border-yellow-700">
+  第 1 步出现 → 第 3 步消失
+</div>
+
+<div v-click="2" class="mt-2 px-4 py-2.5 rounded-lg bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700">
+  第 2 步出现，持续存在
+</div>
+
+<div v-click="3" class="mt-2 px-4 py-2.5 rounded-lg bg-green-50 dark:bg-green-900/30 border border-green-300 dark:border-green-700">
+  第 3 步出现（上方黄色同时消失）
+</div>
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+clicks: 3
+---
+
+<script setup>
+import { computed } from 'vue'
+import { useNav } from '@slidev/client'
+
+const { clicks } = useNav()
+
+const stages = [
+  { label: '初始化', color: '#60a5fa', desc: '项目结构创建完成' },
+  { label: '安装依赖', color: '#34d399', desc: 'node_modules 准备就绪' },
+  { label: '启动服务', color: '#f59e0b', desc: 'localhost:3030 已开启' },
+  { label: '开始编写', color: '#a78bfa', desc: '修改 slides.md 实时预览' },
+]
+
+const activeIdx = computed(() => Math.min(clicks.value, stages.length - 1))
+const active = computed(() => stages[activeIdx.value])
+</script>
+
+# 点击动画④：编程式访问
+
+通过 `useNav()` 获取当前点击状态，驱动**任意 Vue 响应式逻辑**。
+
+<div class="grid grid-cols-2 gap-5 mt-3 text-sm">
+
+<div class="space-y-3">
+
+**在 `<script setup>` 中获取**
+
+```ts
+import { computed } from 'vue'
+import { useNav } from '@slidev/client'
+
+const { clicks } = useNav()
+// clicks 是 Ref<number>，随点击自动递增
+
+const active = computed(
+  () => stages[Math.min(clicks.value,
+                        stages.length - 1)]
+)
+```
+
+**在模板中直接用 `$clicks`**
+
+```html
+<div :style="{
+  opacity: $clicks >= 2 ? 1 : 0.3,
+  color: $clicks >= 3 ? 'green' : 'gray'
+}">
+  随点击数变化的样式
+</div>
+```
+
+</div>
+
+<div class="flex flex-col gap-3">
+
+**实时演示（按 → 推进）**
+
+<div class="px-4 py-3 rounded-xl border-2 transition-all duration-500"
+  :style="{ borderColor: active.color, backgroundColor: active.color + '18' }">
+  <div class="font-bold text-base mb-1" :style="{ color: active.color }">
+    {{ active.label }}
+  </div>
+  <div class="text-gray-600 dark:text-gray-300 text-xs">{{ active.desc }}</div>
+</div>
+
+<div class="space-y-1.5 mt-2">
+  <div v-for="(s, i) in stages" :key="s.label"
+    class="flex items-center gap-2 transition-all duration-300">
+    <div class="w-2 h-2 rounded-full transition-all duration-300"
+      :style="{ backgroundColor: activeIdx === i ? s.color : '#4b5563' }" />
+    <span :class="activeIdx === i ? 'font-medium' : 'text-gray-500 dark:text-gray-600'">
+      {{ s.label }}
+    </span>
+  </div>
+</div>
+
+<div class="mt-2 text-xs text-gray-400">
+  当前 clicks = <span class="font-mono text-blue-400">{{ clicks }}</span> · 按 → 推进
+</div>
+
+</div>
+
+</div>
