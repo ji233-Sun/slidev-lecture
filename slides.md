@@ -250,7 +250,7 @@ transition: slide-left
 <div>
 🖐️ 自由的可拖拽 (Draggable) 对象
 
-<div v-drag="[478,154,439,183]" class="mt-4 p-6 bg-green-50 dark:bg-green-900/30 border-2 border-green-400 dark:border-green-600 rounded-xl text-center cursor-move text-green-800 dark:text-green-100 shadow-lg transform transition-transform hover:scale-105 duration-300">
+<div v-drag="[207,277,439,183]" class="mt-4 p-6 bg-green-50 dark:bg-green-900/30 border-2 border-green-400 dark:border-green-600 rounded-xl text-center cursor-move text-green-800 dark:text-green-100 shadow-lg transform transition-transform hover:scale-105 duration-300">
   <div class="text-4xl mb-3">🎈</div>
   这是一个加入了 <code>v-drag</code> 指令的组件实例。<br><br>
   <strong>试试在播放页面中，将我用鼠标拖拽到任意位置！</strong>
@@ -276,78 +276,198 @@ transition: slide-up
 transition: slide-left
 ---
 
-# 7. 本节你将掌握什么
+# 本节你将掌握什么
 
-<v-clicks>
+<div class="grid grid-cols-2 gap-4 mt-6">
 
-- 如何创建并启动一个 Slidev 项目
-- `slides.md` 的核心结构：Headmatter / Frontmatter / 分隔符
-- 常见语法：代码块、讲者备注、布局配置
-- 演示时最常用的 UI 与快捷键
+<div v-click class="p-4 rounded-xl border border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-900/20">
+  <div class="text-2xl mb-2">🚀</div>
+  <div class="font-bold text-blue-600 dark:text-blue-400 mb-1">创建并启动项目</div>
+  <div class="text-sm text-gray-600 dark:text-gray-400">从零搭建 Slidev 项目，本地预览与常用 CLI 命令</div>
+</div>
 
-</v-clicks>
+<div v-click class="p-4 rounded-xl border border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-900/20">
+  <div class="text-2xl mb-2">📄</div>
+  <div class="font-bold text-green-600 dark:text-green-400 mb-1">slides.md 的结构</div>
+  <div class="text-sm text-gray-600 dark:text-gray-400">Headmatter / Frontmatter / 分隔符 <code>---</code> 的作用与区别</div>
+</div>
 
-> 目标：10 分钟内写出一份可演讲、可导出、可部署的基础幻灯片。
+<div v-click class="p-4 rounded-xl border border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-900/20">
+  <div class="text-2xl mb-2">✍️</div>
+  <div class="font-bold text-purple-600 dark:text-purple-400 mb-1">常见语法</div>
+  <div class="text-sm text-gray-600 dark:text-gray-400">代码块、讲者备注、布局配置的书写方式</div>
+</div>
+
+<div v-click class="p-4 rounded-xl border border-orange-300 dark:border-orange-700 bg-orange-50 dark:bg-orange-900/20">
+  <div class="text-2xl mb-2">⌨️</div>
+  <div class="font-bold text-orange-600 dark:text-orange-400 mb-1">UI 与快捷键</div>
+  <div class="text-sm text-gray-600 dark:text-gray-400">演示时最常用的导航面板与键盘操作</div>
+</div>
+
+</div>
 
 ---
 transition: slide-left
 ---
 
-# 8. 创建并运行项目
+# 创建并运行项目
 
-根据官方 Getting Started，建议本地环境如下：
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
 
-- Node.js `>= 20.12.0`
-- `pnpm`（推荐）
+<div>
+
+**环境要求**
+
+<div class="flex gap-2 mt-2 mb-4">
+  <span class="px-2 py-0.5 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 rounded font-mono text-xs">Node.js ≥ 20.12</span>
+  <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded font-mono text-xs">pnpm（推荐）</span>
+</div>
+
+**初始化流程**
 
 ```bash
-# 全局安装 pnpm（如果还没有）
+# 安装 pnpm（首次）
 npm i -g pnpm
 
-# 创建项目
+# 创建并启动项目
 pnpm create slidev
-
-# 进入目录并启动
 pnpm install
 pnpm dev
 ```
 
-常用命令：
+</div>
 
-- `pnpm dev`：本地预览（通常会打开 `http://localhost:3030`）
-- `pnpm build`：构建静态站点
-- `pnpm export`：导出 PDF / PPTX / PNG
-- `pnpm slidev --help`：查看 CLI 帮助
+<div>
+
+**常用命令**
+
+<div class="space-y-2 mt-2">
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 whitespace-nowrap shrink-0">pnpm dev</code>
+    <span class="text-gray-500 dark:text-gray-400">本地预览 · localhost:3030</span>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 whitespace-nowrap shrink-0">pnpm build</code>
+    <span class="text-gray-500 dark:text-gray-400">构建静态站点</span>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 whitespace-nowrap shrink-0">pnpm export</code>
+    <span class="text-gray-500 dark:text-gray-400">导出 PDF / PPTX / PNG</span>
+  </div>
+  <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-500 dark:text-blue-400 whitespace-nowrap shrink-0">pnpm slidev --help</code>
+    <span class="text-gray-500 dark:text-gray-400">查看 CLI 帮助</span>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<div class="mt-5 pt-4 border-t border-gray-200 dark:border-gray-700">
+
+**VSCode 插件**
+
+<div class="flex items-center gap-4 mt-2">
+  <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800">
+    <span class="i-logos-visual-studio-code text-xl" />
+    <span class="font-mono text-xs text-blue-700 dark:text-blue-300">antfu.slidev</span>
+  </div>
+  <div class="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
+    <span>🔍 侧边栏幻灯片预览</span>
+    <span>⚡ 实时热更新</span>
+    <span>🎯 快速跳转幻灯片</span>
+    <span>📝 Markdown 语法提示</span>
+  </div>
+</div>
+
+</div>
 
 ---
 transition: slide-left
+clicks: 3
 ---
 
-# 9. 理解 slides.md 的结构
+<script setup>
+import { computed } from 'vue'
+import { useNav } from '@slidev/client'
 
-```md
----
-theme: default
-title: 我的第一份 Slidev
----
+const { clicks } = useNav()
 
-# Slide 1
+const LINE_H = 24
+const PAD_TOP = 12
 
-这是第一页
+const steps = [
+  { label: 'Headmatter',  desc: '作用于整个 deck，设置主题、标题、全局选项', color: '#4ade80', start: 0, end: 3  },
+  { label: '分隔符 ---',  desc: '独占一行，标记新幻灯片页面的开始',           color: '#fbbf24', start: 9, end: 9  },
+  { label: 'Frontmatter', desc: '作用于单页，设置该页布局、样式与过渡效果',   color: '#c084fc', start: 9, end: 12 },
+  { label: '页面内容',    desc: 'Markdown / Vue / HTML 书写幻灯片正文',        color: '#60a5fa', start: 5, end: 7  },
+]
 
----
-layout: center
-class: text-center
----
+const idx  = computed(() => Math.min(clicks.value, steps.length - 1))
+const step = computed(() => steps[idx.value])
 
-# Slide 2
-```
+const boxStyle = computed(() => ({
+  top:         `${PAD_TOP + step.value.start * LINE_H}px`,
+  height:      `${(step.value.end - step.value.start + 1) * LINE_H}px`,
+  borderColor: step.value.color,
+  boxShadow:   `0 0 14px ${step.value.color}55`,
+}))
+</script>
 
-要点：
+# 理解 slides.md 的结构
 
-- 第一段 YAML 叫 **Headmatter**，作用于整个 deck
-- 后续每页开头 YAML 叫 **Frontmatter**，作用于单页
-- `---`（独占一行）用于分隔幻灯片
+<div class="grid grid-cols-[1fr_230px] gap-5 mt-4 items-start">
+
+<div class="relative font-mono text-sm leading-6 bg-gray-900 text-gray-100 rounded-lg overflow-hidden select-none">
+  <div class="p-3">
+    <div class="text-yellow-400">---</div>
+    <div class="text-green-300">theme: default</div>
+    <div class="text-green-300">title: 我的第一份 Slidev</div>
+    <div class="text-yellow-400">---</div>
+    <div>&nbsp;</div>
+    <div class="text-blue-300"># Slide 1</div>
+    <div>&nbsp;</div>
+    <div class="text-gray-200">这是第一页</div>
+    <div>&nbsp;</div>
+    <div class="text-yellow-400">---</div>
+    <div class="text-purple-300">layout: center</div>
+    <div class="text-purple-300">class: text-center</div>
+    <div class="text-yellow-400">---</div>
+    <div>&nbsp;</div>
+    <div class="text-blue-300"># Slide 2</div>
+  </div>
+  <div
+    class="absolute left-2 right-2 border-2 rounded pointer-events-none transition-all duration-500 ease-in-out"
+    :style="boxStyle"
+  />
+</div>
+
+<div class="flex flex-col gap-3 pt-1 text-sm">
+  <div
+    class="p-3 rounded-lg border-2 transition-all duration-500"
+    :style="{ borderColor: step.color, backgroundColor: step.color + '18' }"
+  >
+    <div class="font-bold text-base mb-1 transition-colors duration-300" :style="{ color: step.color }">
+      {{ step.label }}
+    </div>
+    <div class="text-gray-600 dark:text-gray-300 text-xs leading-5">{{ step.desc }}</div>
+  </div>
+
+  <div class="text-xs text-gray-400">步骤 {{ idx + 1 }} / {{ steps.length }} · 按 → 推进</div>
+
+  <div class="space-y-2 text-xs mt-1">
+    <div v-for="(s, i) in steps" :key="s.label" class="flex items-center gap-2 transition-all duration-300">
+      <div
+        class="w-2 h-2 rounded-full flex-shrink-0 transition-all duration-300"
+        :style="{ backgroundColor: idx === i ? s.color : '#4b5563' }"
+      />
+      <span :class="idx === i ? 'font-medium text-gray-200' : 'text-gray-500'">{{ s.label }}</span>
+    </div>
+  </div>
+</div>
+
+</div>
 
 ---
 transition: slide-left
