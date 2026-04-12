@@ -250,7 +250,7 @@ transition: slide-left
 <div>
 🖐️ 自由的可拖拽 (Draggable) 对象
 
-<div v-drag="[207,277,439,183]" class="mt-4 p-6 bg-green-50 dark:bg-green-900/30 border-2 border-green-400 dark:border-green-600 rounded-xl text-center cursor-move text-green-800 dark:text-green-100 shadow-lg transform transition-transform hover:scale-105 duration-300">
+<div v-drag="[481,166,439,183]" class="mt-4 p-6 bg-green-50 dark:bg-green-900/30 border-2 border-green-400 dark:border-green-600 rounded-xl text-center cursor-move text-green-800 dark:text-green-100 shadow-lg transform transition-transform hover:scale-105 duration-300">
   <div class="text-4xl mb-3">🎈</div>
   这是一个加入了 <code>v-drag</code> 指令的组件实例。<br><br>
   <strong>试试在播放页面中，将我用鼠标拖拽到任意位置！</strong>
@@ -976,6 +976,316 @@ const active = computed(
   当前 clicks = <span class="font-mono text-blue-400">{{ clicks }}</span> · 按 → 推进
 </div>
 
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 公式①：行内公式
+
+用单个 `$...$` 包裹 LaTeX，公式会**嵌入文字行内**渲染。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**书写方式**
+
+![alt text](./image-6.png)
+
+<div class="mt-3 text-gray-500 dark:text-gray-400 text-xs space-y-1">
+  <div>· 用 <code>$</code> 包裹，与正文同行</div>
+  <div>· <code>\dfrac</code> 强制显示模式分数，更清晰</div>
+  <div>· 支持完整 KaTeX 语法</div>
+</div>
+
+</div>
+
+<div>
+
+**渲染效果**
+
+<div class="space-y-4 mt-2 px-4 py-4 rounded-lg bg-gray-50 dark:bg-gray-800/60 leading-8">
+
+质能方程 $E = mc^2$ 由爱因斯坦提出。
+
+欧拉公式 $e^{i\pi} + 1 = 0$ 被誉为最美数学公式。
+
+二次方程求根公式为 $x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+
+</div>
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 公式②：行间公式
+
+用 `$$...$$` 包裹，公式会**独占一行**并居中放大显示。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**书写方式**
+
+![alt text](./image-4.png)
+
+<div class="mt-3 text-gray-500 dark:text-gray-400 text-xs space-y-1">
+  <div>· 用 <code>$$</code> 包裹，独占一行居中</div>
+  <div>· 公式内可自由换行，不影响渲染</div>
+  <div>· 适合重点公式的强调展示</div>
+</div>
+
+</div>
+
+<div>
+
+**渲染效果**
+
+傅里叶变换：
+
+$$
+f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi)\,e^{2\pi i \xi x}\,d\xi
+$$
+
+正态分布概率密度：
+
+$$
+f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 公式③：多行公式
+
+借助 LaTeX 环境（`aligned`、`cases`、`matrix`）书写**对齐或分组的多行公式**。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+![alt text](./image-5.png)
+
+</div>
+
+<div>
+
+**渲染效果**
+
+$$
+\begin{aligned}
+(a+b)^2 &= (a+b)(a+b) \\
+        &= a^2 + ab + ba + b^2 \\
+        &= a^2 + 2ab + b^2
+\end{aligned}
+$$
+
+$$
+f(x) = \begin{cases}
+  x^2   & x \geq 0 \\
+  -x^2  & x < 0
+\end{cases}
+$$
+
+> **小贴士**：`&` 标记对齐点，`\\` 换行，`cases` 自动添加左大括号。
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+---
+
+# 高级动画①：v-motion 元素运动
+
+`v-motion` 为任意元素定义**初始态与终态**，自动插值产生物理感运动。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**语法结构**
+
+```html
+<div
+  v-motion
+  :initial="{ opacity: 0, x: -80 }"
+  :enter="{
+    opacity: 1,
+    x: 0,
+    transition: { duration: 600 }
+  }"
+  :click-1="{
+    scale: 1.2,
+    transition: { type: 'spring' }
+  }"
+>
+  我会飞进来，点击后放大
+</div>
+```
+
+<div class="mt-3 text-gray-500 dark:text-gray-400 text-xs space-y-1">
+  <div>· <code>:initial</code> 初始状态（进入前）</div>
+  <div>· <code>:enter</code> 进入动画终态</div>
+  <div>· <code>:click-N</code> 第 N 次点击触发变换</div>
+</div>
+
+</div>
+
+<div class="space-y-4">
+
+**实时演示**
+
+<div
+  v-motion
+  :initial="{ opacity: 0, x: -60 }"
+  :enter="{ opacity: 1, x: 0, transition: { duration: 700 } }"
+  class="px-4 py-3 rounded-xl bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 text-blue-800 dark:text-blue-200"
+>
+  ← 从左侧飞入
+</div>
+
+<div
+  v-motion
+  :initial="{ opacity: 0, y: 50 }"
+  :enter="{ opacity: 1, y: 0, transition: { delay: 300, duration: 600 } }"
+  class="px-4 py-3 rounded-xl bg-green-50 dark:bg-green-900/30 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200"
+>
+  ↑ 从下方浮现（延迟 300ms）
+</div>
+
+<div
+  v-motion
+  :initial="{ opacity: 0, scale: 0.5 }"
+  :enter="{ opacity: 1, scale: 1, transition: { type: 'spring', delay: 600 } }"
+  class="px-4 py-3 rounded-xl bg-purple-50 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-700 text-purple-800 dark:text-purple-200"
+>
+  ⊕ Spring 弹性缩放（延迟 600ms）
+</div>
+
+</div>
+
+</div>
+
+---
+transition: slide-left
+clicks: 4
+---
+
+# 高级动画②：v-mark 标注动画
+
+`v-mark` 基于 **Rough Notation**，用手绘风格的笔触为文字添加视觉标注。
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm items-start">
+
+<div>
+
+**语法结构**
+
+```md
+<!-- 第 1 次点击：红色高亮 -->
+<span v-mark.highlight.red="1">
+  核心概念
+</span>
+
+<!-- 第 2 次点击：橙色下划线 -->
+<span v-mark.underline.orange="2">
+  重要术语
+</span>
+
+<!-- 第 3 次点击：蓝色圆圈 -->
+<span v-mark.circle.blue="3">
+  关键数据
+</span>
+
+<!-- 第 4 次点击：删除线 -->
+<span v-mark.strike-through.red="4">
+  错误示范
+</span>
+```
+
+</div>
+
+<div class="space-y-5 mt-2 text-base leading-loose">
+
+**实时演示（按 → 依次标注）**
+
+Slidev 是专为
+<span v-mark.highlight.yellow="1">开发者</span>
+设计的演示工具，
+
+支持
+<span v-mark.underline.orange="2">Markdown 与 Vue 混写</span>，
+
+让
+<span v-mark.circle.blue="3">代码演示</span>
+变得生动有趣，
+
+而传统 PPT 的做法则
+<span v-mark.strike-through.red="4">效率低下且难以维护</span>。
+
+</div>
+
+</div>
+
+---
+transition: fade
+---
+
+# 高级动画③：内置页面过渡
+
+在 frontmatter 写 `transition: <名称>` 即可切换效果，这一页本身就用的 `fade` 过渡喵～
+
+<div class="mt-5 space-y-3 text-sm">
+
+<div class="grid grid-cols-2 gap-3">
+  <div class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-400 text-base w-28 shrink-0">slide-left</code>
+    <span class="text-gray-600 dark:text-gray-300">从右侧滑入 · 本 deck 默认</span>
+  </div>
+  <div class="flex items-center gap-4 px-4 py-3 rounded-xl bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700">
+    <code class="text-blue-400 text-base w-28 shrink-0">fade</code>
+    <span class="text-gray-600 dark:text-gray-300">淡入淡出 · 当前页在用 ✓</span>
+  </div>
+  <div class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-400 text-base w-28 shrink-0">zoom</code>
+    <span class="text-gray-600 dark:text-gray-300">从中心缩放进入</span>
+  </div>
+  <div class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-400 text-base w-28 shrink-0">slide-up</code>
+    <span class="text-gray-600 dark:text-gray-300">从下方向上滑入</span>
+  </div>
+  <div class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-400 text-base w-28 shrink-0">fade-out</code>
+    <span class="text-gray-600 dark:text-gray-300">旧页先淡出，新页再出现</span>
+  </div>
+  <div class="flex items-center gap-4 px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+    <code class="text-blue-400 text-base w-28 shrink-0">none</code>
+    <span class="text-gray-600 dark:text-gray-300">无过渡，瞬间切换</span>
+  </div>
+</div>
+
+<div class="mt-4 px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-800/60 text-xs text-gray-500 dark:text-gray-400 font-mono">
+  <span class="text-purple-400">transition</span>: slide-left
+  <span class="mx-4 text-gray-400"><!-- 单页设置 --></span>
+  <span class="text-green-400">OR</span>
+  <span class="mx-4 text-purple-400">headmatter transition</span>: fade
+  <span class="text-gray-400"><!-- 全局设置 --></span>
 </div>
 
 </div>
