@@ -1289,3 +1289,37 @@ transition: fade
 </div>
 
 </div>
+
+---
+transition: slide-left
+---
+
+# 更多话题
+
+<div class="grid grid-cols-3 gap-5 mt-8">
+
+<div class="p-5 rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20">
+  <div class="text-3xl mb-3">🧩</div>
+  <div class="font-bold text-blue-600 dark:text-blue-400 mb-2">混合内容写法</div>
+  <div class="text-sm text-gray-500 dark:text-gray-400">
+    在同一页中自由混合 Markdown、原生 HTML 与 Vue 组件
+  </div>
+</div>
+
+<div class="p-5 rounded-xl border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-900/20">
+  <div class="text-3xl mb-3">🎨</div>
+  <div class="font-bold text-purple-600 dark:text-purple-400 mb-2">UnoCSS</div>
+  <div class="text-sm text-gray-500 dark:text-gray-400">
+    Slidev 内置 UnoCSS，class 即样式，无需额外配置
+  </div>
+</div>
+
+<div class="p-5 rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20">
+  <div class="text-3xl mb-3">💅</div>
+  <div class="font-bold text-green-600 dark:text-green-400 mb-2">CSS 作用域</div>
+  <div class="text-sm text-gray-500 dark:text-gray-400">
+    全局 CSS 影响所有页面，单页 <code>&lt;style scoped&gt;</code> 只作用于当前幻灯片
+  </div>
+</div>
+
+</div>
