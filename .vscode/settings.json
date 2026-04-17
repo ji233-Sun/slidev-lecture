@@ -1,0 +1,8 @@
+{
+    "slidev.include": [
+        "**/slides.md",
+        "template.md",
+        "learn.md",
+        "pure.md"
+    ]
+}
